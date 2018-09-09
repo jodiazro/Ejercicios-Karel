@@ -10,17 +10,19 @@
  */
 public class Main {
     public static void main(String[] args) {
-        Parqueadero karel =
-                new Parqueadero(5,3);
-        karel.ingresarVehiculo("ABC101");
+        
+        Parqueadero karel = new Parqueadero(5,3);
+        karel.ingresarVehiculo("CBC101");
+        karel.ingresarVehiculo("ASC121");
+        karel.ingresarVehiculo("KLC121");
+        karel.ingresarVehiculo("ABY001");
         karel.ingresarVehiculo("ABC121");
         karel.ingresarVehiculo("KLC121");
-        karel.ingresarVehiculo("ABC101");
+        karel.ingresarVehiculo("ABM091");
         karel.ingresarVehiculo("ABC121");
-        karel.ingresarVehiculo("KLC121");
-        karel.ingresarVehiculo("ABC101");
-        karel.ingresarVehiculo("ABC121");
-        karel.ingresarVehiculo("KLC121");
+        karel.ingresarVehiculo("KLC131");
+        karel.sacarVehiculo("CBC101");
+        karel.sacarVehiculo("ABY001");
         
         
     }
