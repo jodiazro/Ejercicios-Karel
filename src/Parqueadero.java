@@ -17,9 +17,10 @@ public class Parqueadero{
     private int[] ocupados;
     private int secciones;
     private int puestos;
+    private String[][] usuarios;
     
 
-    public Parqueadero(int p, int pt, int s) {
+    public Parqueadero(int p, int s) {
        this.secciones=s;
        this.puestos=p;
        this.ocupados= new int[s];
@@ -34,20 +35,13 @@ public class Parqueadero{
                 pared = new Wall(ciudad, j, i, Direction.WEST);
             }            
         }
-        for(int i=1;i<=pt;i++){
+        for(int i=1;i<=p-1;i++){
             Wall pared = new Wall(ciudad,i,s+1,Direction.EAST);
         }
         Wall pared = new Wall(ciudad,p+1,s+1,Direction.EAST);
-        
-        
-        //Wall pared= new Wall(ciudad,);
-    /*
-        Thing thing = new Thing(ciudad, 2, 2);
-        thing.getIcon().setColor(Color.LIGHT_GRAY);
-        thing.getIcon().setLabel("Placa");
-        */
+  
         this.robot1 = new Robot(ciudad, p, s+2, Direction.WEST);       
-        this.robot1.setLabel("Robot");
+        //this.robot1.setLabel("Robot");
         this.robot1.setColor(Color.ORANGE);
     }
     
@@ -57,6 +51,8 @@ public class Parqueadero{
         carro.getIcon().setColor(Color.LIGHT_GRAY);
         carro.getIcon().setLabel(placa);
         
+        int seccion=this.seccionMasVacia();
+        
         this.robot1.pickThing();
         
         this.robot1.move();
@@ -65,21 +61,39 @@ public class Parqueadero{
         
         for(int i=0;i<3;i++)this.robot1.turnLeft();
         
-        for(int i=1;i<=this.seccionMasVacia();i++){
+        for(int i=1;i<=seccion+1;i++){
             this.robot1.move();
         }
         
         for(int i=0;i<3;i++)this.robot1.turnLeft();
         
-        for(int i=this.ocupados[this.seccionMasVacia()];i<this.puestos;i++){
+        for(int i=this.ocupados[seccion];i<this.puestos;i++){
             this.robot1.move();
         }
         
         this.robot1.putThing();
         
+        for(int i=0;i<2;i++)this.robot1.turnLeft();
+        
+        for(int i=this.ocupados[seccion];i<this.puestos;i++){
+            this.robot1.move();
+        }
+        
+        this.robot1.turnLeft();
+        
+        for(int i=1;i<=seccion+1;i++)this.robot1.move();        
+        this.robot1.turnLeft();
+        this.robot1.move();
+        for(int i=0;i<3;i++)this.robot1.turnLeft();
+        this.robot1.move();
+        for(int i=0;i<2;i++)this.robot1.turnLeft();
+        
+        this.ocupados[seccion]+=1;
         
     }
-    
+    public void sacarVehiculo(String placa){
+        
+    }
     public int seccionMasVacia(){
         int sec=0;
         for(int i=1;i<this.secciones;i++){
@@ -87,7 +101,9 @@ public class Parqueadero{
                 sec=i;
             }
         }
-        return sec+1;
+        System.out.println(sec);
+        return sec;
+        
     }
             
     

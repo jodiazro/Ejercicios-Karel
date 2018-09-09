@@ -1,0 +1,6 @@
+Harvest a Field
+# first street, first avenue, num streets, num avenues showing 
+0 0 10 10
+# intersection size (in pixels) 
+40
+
