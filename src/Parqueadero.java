@@ -5,8 +5,11 @@
  */
 
 /**
- *
- * @author Estudiante
+ * 
+ * @author Johan Andrés Díaz Roa
+ *         Ahmet Felipe Marquez Gelvis
+ *         Santiago Hernández Lamprea
+ *         Cristian Camilo Vargas Morales
  */
 import becker.robots.*;
 import java.awt.Color;
@@ -98,6 +101,7 @@ public class Parqueadero{
         
         
     }
+    
     public void sacarVehiculo(String placa){
         int s = 0,p = 0;
         
@@ -193,8 +197,4 @@ public class Parqueadero{
         return sec;
         
     }
-            
-    
-    
-    
 }
