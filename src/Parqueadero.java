@@ -197,4 +197,12 @@ public class Parqueadero{
         return sec;
         
     }
+
+    public String mostrarSeccion(){
+        
+    }
+    
+    public double gananciasGeneradas(){
+        
+    }
 }
