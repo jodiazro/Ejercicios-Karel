@@ -12,6 +12,7 @@
  *         Cristian Camilo Vargas Morales
  */
 import becker.robots.*;
+import becker.util.DateTime;
 import java.awt.Color;
 
 public class Parqueadero{
@@ -22,6 +23,7 @@ public class Parqueadero{
     private int secciones;
     private int puestos;
     private String[][] usuarios;
+    private DateTime tiempo;
     
 // Parqueadero(Numero de puestos de cada seccion, Numero de seccciones)
     public Parqueadero(int p, int s) {
@@ -38,11 +40,13 @@ public class Parqueadero{
             pared = new Wall(ciudad, p+1, i, Direction.SOUTH);
             for(int j=1; j<=p;j++){
                 pared = new Wall(ciudad, j, i, Direction.WEST);
-            }            
-        }
+                }            
+            }
+        
         for(int i=1;i<=p-1;i++){
             Wall pared = new Wall(ciudad,i,s+1,Direction.EAST);
-        }
+            }
+        
         Wall pared = new Wall(ciudad,p+1,s+1,Direction.EAST);
   
         this.robot1 = new Robot(ciudad, p, s+2, Direction.WEST);       
@@ -103,7 +107,7 @@ public class Parqueadero{
     }
     
     public void sacarVehiculo(String placa){
-        int s = 0,p = 0;
+        int s = 0, p = 0;
         
         for(int i=0;i<this.secciones;i++){
             for(int j=0;j<this.ocupados[i];j++){
@@ -199,10 +203,14 @@ public class Parqueadero{
     }
 
     public String mostrarSeccion(){
-        
+        return " ";
     }
-    
-    public double gananciasGeneradas(){
         
+    public void gananciasGeneradas(String placa){ //nos sirve para calcular el final del tiempo y reiniciar el contador
+        DateTime tiempo = new DateTime (2018, 09, 10, 0, 0, 0); 
+        double tarifaHora = 100; //A $100 el minuto
+        int hora = tiempo.getHour();
+        System.out.println(tarifaHora*hora);
+        tiempo.setTime(0, 0, 0);
     }
 }
